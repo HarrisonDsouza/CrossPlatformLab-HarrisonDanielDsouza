@@ -1,45 +1,45 @@
 name: Multi-OS Testing - Harrison
 
 on:
-  push:
-    branches: [ "main" ]
-
+    push:
+        branches: ["main"]
 
 jobs:
-  test-ubuntu:
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Start Ubuntu Test
-        run: echo "Testing on Ubuntu..."
+    test-ubuntu:
+        runs-on: ubuntu-latest
 
-      - name: Display OS Information (Ubuntu)
-        run: uname -a
+        steps:
+            - name: Start Ubuntu Test
+              run: echo "Testing on Ubuntu..."
 
-      - name: Create Test File (Ubuntu)
-        run: echo "Ubuntu test by Harrison" > test-ubuntu.txt
-        
-      - name: Display File Contents (Ubuntu)
-        run: cat test-ubuntu.txt
-        
-      - name: Complete Ubuntu Test
-        run: echo "Ubuntu tests completed"
+            - name: Display OS Information (Ubuntu)
+              run: uname -a
 
-  test-windows:
-    runs-on: windows-latest
-    
-    steps:
-      - name: Start Windows Test
-        run: echo "Testing on Windows..."
+            - name: Create Test File (Ubuntu)
+              run: echo "Ubuntu test by Harrison" > test-ubuntu.txt
 
-      - name: Display OS Information (Windows)
-        run: ver
+            - name: Display File Contents (Ubuntu)
+              run: cat test-ubuntu.txt
 
-      - name: Create Test File (Windows)
-        run: echo "Windows test by Harrison" > test-windows.txt
+            - name: Complete Ubuntu Test
+              run: echo "Ubuntu tests completed"
 
-      - name: Display File Contents (Windows)
-        run: type test-windows.txt
+    test-windows:
+        runs-on: windows-latest
 
-      - name: Complete Windows Test
-        run: echo "Windows tests completed"
+        steps:
+            - name: Start Windows Test
+              run: echo "Testing on Windows..."
+
+            - name: Display OS Information (Windows)
+              run: systeminfo | Select-String "OS Name", "OS Version"
+
+            - name: Create Test File (Windows)
+              run: echo "Windows test by Harrison" > test-windows.txt
+
+            - name: Display File Contents (Windows)
+              run: type test-windows.txt
+              shell: cmd
+
+            - name: Complete Windows Test
+              run: echo "Windows tests completed"
