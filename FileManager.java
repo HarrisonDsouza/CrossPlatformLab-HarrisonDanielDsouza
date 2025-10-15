@@ -55,6 +55,35 @@ public class FileManager {
     }
 
     /**
+     * Copies a file from source to destination
+     */
+    public boolean copyFile(String source, String destination) {
+        try {
+            Path sourcePath = Paths.get(source);
+            Path destPath = Paths.get(destination);
+            Files.copy(sourcePath, destPath, StandardCopyOption.REPLACE_EXISTING);
+            System.out.println("File copied successfully from " + source + " to " + destination);
+            return true;
+        } catch (IOException e) {
+            System.err.println("Error copying file: " + e.getMessage());
+            return false;
+        }
+    }
+
+    /**
+     * Gets the size of a file in bytes
+     */
+    public long getFileSize(String fileName) {
+        try {
+            Path path = Paths.get(fileName);
+            return Files.size(path);
+        } catch (IOException e) {
+            System.err.println("Error getting file size: " + e.getMessage());
+            return -1;
+        }
+    }
+
+    /**
      * Main method for testing
      */
     public static void main(String[] args) {
