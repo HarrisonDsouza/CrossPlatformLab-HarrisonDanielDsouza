@@ -1,0 +1,45 @@
+name: Multi-OS Testing - Harrison
+
+on:
+  push:
+    branches: [ "main" ]
+
+
+jobs:
+  test-ubuntu:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Start Ubuntu Test
+        run: echo "Testing on Ubuntu..."
+
+      - name: Display OS Information (Ubuntu)
+        run: uname -a
+
+      - name: Create Test File (Ubuntu)
+        run: echo "Ubuntu test by Harrison" > test-ubuntu.txt
+        
+      - name: Display File Contents (Ubuntu)
+        run: cat test-ubuntu.txt
+        
+      - name: Complete Ubuntu Test
+        run: echo "Ubuntu tests completed"
+
+  test-windows:
+    runs-on: windows-latest
+    
+    steps:
+      - name: Start Windows Test
+        run: echo "Testing on Windows..."
+
+      - name: Display OS Information (Windows)
+        run: ver
+
+      - name: Create Test File (Windows)
+        run: echo "Windows test by Harrison" > test-windows.txt
+
+      - name: Display File Contents (Windows)
+        run: type test-windows.txt
+
+      - name: Complete Windows Test
+        run: echo "Windows tests completed"
